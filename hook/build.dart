@@ -10,6 +10,7 @@ import 'package:native_toolchain_c/native_toolchain_c.dart';
 
 void main(List<String> args) async {
   await build(args, (config, output) async {
+    var libDir = "${config.packageRoot.path}/native/lib/macos";
     final packageName = config.packageName;
 
     final cbuilder = CBuilder.library(
@@ -25,7 +26,7 @@ void main(List<String> args) async {
         '-framework',
         'Foundation',
         '-lsentencepiece',
-        "-L${config.packageRoot.path}/native/lib/macos",
+        "-L$libDir",
       ],
       dartBuildFiles: ['hook/build.dart'],
     );

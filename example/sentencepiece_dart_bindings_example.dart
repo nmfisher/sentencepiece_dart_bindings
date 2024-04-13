@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:sentencepiece_dart_bindings/sentencepiece_dart_bindings.dart';

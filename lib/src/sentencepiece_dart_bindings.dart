@@ -23,7 +23,7 @@ class SentencePieceTokenizer {
     var ptr = string.toNativeUtf8();
     var result = sentence_piece_encode(_tokenizer, ptr.cast<Char>());
     calloc.free(ptr);
-    var ids = List<int>.of(result.data.asTypedList(result.length));
+    var ids = List<int>.from(result.data.asTypedList(result.length));
     sentence_piece_free_int_array(result.data);
     return ids;
   }

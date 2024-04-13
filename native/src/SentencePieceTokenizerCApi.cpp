@@ -35,7 +35,9 @@ void* const sentence_piece_create_processor_from_serialized_model(const char* se
 
 Int32Array sentence_piece_encode(void* const processor, const char* input) {
 	auto result = (static_cast<SentencePieceProcessor*>(processor))->EncodeAsIds(input);
-	return Int32Array { result.data(), (int32_t) result.size() };
+    auto data = (int32_t*) malloc(result.size() * sizeof(int32_t));
+    memcpy(data, result.data(), result.size() * sizeof(int32_t));
+	return Int32Array { data, (int32_t) result.size() };
 }
 
 }
